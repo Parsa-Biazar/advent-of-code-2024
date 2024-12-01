@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Days;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [Days::class,'index'])->name('days')->name('days');
+Route::get('/{day}', [Days::class,'day'])->name('singleDay')->name('SingleDays');
