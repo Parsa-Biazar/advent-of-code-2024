@@ -14,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [Days::class,'index'])->name('days')->name('days');
-Route::get('/{day}', [Days::class,'day'])->name('singleDay')->name('SingleDays');
+Route::get('/', [Days::class,'index'])->name('days');
+Route::get('/{day}', [Days::class,'day'])->name('SingleDays');
+Route::get('/{day}/{part}/', [Days::class,'solutions'])->name('Solutions');

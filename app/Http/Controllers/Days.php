@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 class Days extends Controller
 {
+    public $day;
+
     public function index()
     {
         $days = 25;
@@ -14,6 +16,7 @@ class Days extends Controller
     {
         $answer = 0;
         if ($day === 'day1') {
+            $this->day = '1';
             $path = base_path('resources/data/day1.txt');
             $numbers = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
             $leftArray = [];
@@ -28,7 +31,7 @@ class Days extends Controller
             sort($leftArray);
             sort($rightArray);
 
-                $answer=[];
+            $answer = [];
             for ($i = 0; $i < count($leftArray); $i++) {
                 if ($leftArray[$i] > $rightArray[$i]) {
                     $answer[] += abs($rightArray[$i] - $leftArray[$i]);
@@ -37,7 +40,19 @@ class Days extends Controller
                 }
             }
 
-            echo array_sum($answer);
+            $answer = array_sum($answer);
+            $answers[] = $answer;
+        }
+        return view('Answers', ['answers' => $answers, 'day' => $day]);
+    }
+
+    public function solutions($day, $part)
+    {
+        if ($day === 'day1') {
+            if ($part=== 'part1'){
+                $code = "";
+                return view('Solutions', ['codes' => 'code']);
+            }
         }
     }
 }
