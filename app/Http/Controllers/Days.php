@@ -14,7 +14,8 @@ class Days extends Controller
 
     public function day($day)
     {
-        $answer = 0;
+        //todo = part 1
+        $answers = [];
         if ($day === 'day1') {
             $this->day = '1';
             $path = base_path('resources/data/day1.txt');
@@ -22,7 +23,6 @@ class Days extends Controller
             $leftArray = [];
             $rightArray = [];
             for ($i = 0; $i < count($numbers); $i++) {
-
                 $f = trim($numbers[$i]);
                 $l = explode('   ', $f);
                 $leftArray[] = $l[0];
@@ -39,17 +39,32 @@ class Days extends Controller
                     $answer[] += abs($leftArray[$i] - $rightArray[$i]);
                 }
             }
-
-            $answer = array_sum($answer);
-            $answers[] = $answer;
+            //todo = final part 1 answer
+            $answers[] = array_sum($answer);
+            //todo = part 2
+            foreach ($leftArray as $o) {
+                    $repeat = '';
+                for ($i = 0; $i < count($rightArray); $i++) {
+                    if ($o == $rightArray[$i]) {
+                        $repeat++;
+                    }
+                }
+                if ($repeat > 0) {
+                    dump("Element $o, Repeat $repeat");
+                }
+            }
+            //todo = final part 2 answer
+            $answers[] = '';
         }
+
         return view('Answers', ['answers' => $answers, 'day' => $day]);
     }
+
 
     public function solutions($day, $part)
     {
         if ($day === 'day1') {
-            if ($part=== 'part1'){
+            if ($part === 'part1') {
                 $code = "";
                 return view('Solutions', ['codes' => 'code']);
             }
