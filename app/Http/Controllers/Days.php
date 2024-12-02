@@ -14,6 +14,11 @@ class Days extends Controller
 
     public function day($day)
     {
-        dd($day);
+        if ($day === 'day1') {
+            $path = base_path('resources/data/day1.txt');
+            $numbers = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+
+        }
     }
 }
