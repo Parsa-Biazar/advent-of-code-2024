@@ -12,22 +12,31 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @vite('resources/css/app.css')
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+<body class="bg-gray-900 min-h-screen flex items-center justify-center">
 <div class="flex flex-wrap justify-center gap-6 p-8">
     @for($i=1 ; $i <= $days ; $i++)
         <div>
             <div
-                class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 dark:bg-gray-800 dark:border-gray-700">
-                <a href="day{{$i}}"
+                class="max-w-sm p-5 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 dark:bg-gray-800 dark:border-gray-700">
+                <p class="mb-8 text-2xl font-semibold text-violet-500 text-center">Day {{$i}}</p>
+                <a href="day/{{$i}}/part/1"
                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800">
-                    Read more
+                    Day {{$i}} Part 1!
                     <svg class="rtl:rotate-180 w-4 h-4 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                          fill="none" viewBox="0 0 14 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M1 5h12m0 0L9 1m4 4L9 9"/>
                     </svg>
                 </a>
-                <p class="mt-4 text-2xl font-semibold text-violet-500 text-center">Day {{$i}}</p>
+                <a href="day/{{$i}}/part/2"
+                   class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800">
+                    Day {{$i}} Part 2!
+                    <svg class="rtl:rotate-180 w-4 h-4 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                         fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+                </a>
             </div>
         </div>
     @endfor

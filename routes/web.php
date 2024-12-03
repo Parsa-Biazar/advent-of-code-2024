@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Days;
+use App\Http\Controllers\DaysController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [Days::class,'index'])->name('days');
-Route::get('/{day}', [Days::class,'day'])->name('SingleDays');
-Route::get('/{day}/{part}/', [Days::class,'solutions'])->name('Solutions');
+Route::get('/', [DaysController::class, 'index'])->name('index');
+Route::get('day/{day}/part/{part}/', [DaysController::class, 'details'])->name('details');
+Route::get('php', function (){
+    phpinfo();
+});
