@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DaysController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [DaysController::class, 'index'])->name('index');
+Route::get('day/{day}/part/{part}/', [DaysController::class, 'details'])->name('details');
+Route::get('php', function (){
+    phpinfo();
 });
