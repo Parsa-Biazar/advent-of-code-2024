@@ -15,19 +15,17 @@
 <body class="bg-gray-900 min-h-screen flex-row items-center justify-center p-20">
 <div class="justify-center border-b-cyan-600 border-r-cyan-600 border-t-red-500 border-l-red-500 border-4 rounded-2xl p-10">
     @if (!$info->isEmpty())
-        <pre class="flex mb-5 bg-red-600 rounded-2xl p-4 justify-center">
+        <pre class="flex mb-5 bg-red-300 rounded-2xl p-4 justify-center">
             <code class="language-php rounded-2xl">
-                {{ htmlspecialchars($info[0]->solution) }}
+                {{ ($info[0]->solution) }}
             </code>
         </pre>
         <h1 class="flex justify-center text-2xl bg-blue-600 rounded-2xl p-2">
             Answer was: {{ $info[0]->answer }}
         </h1>
     @else
-        <pre class="flex mb-5 bg-red-600 rounded-2xl p-4 justify-center">
-            <code>'No solution available.
-            </code>
-        </pre>
+        <pre class="flex mb-5 bg-blue-500 rounded-2xl p-4 justify-center">No solution available.
+            </pre>
         <h1 class="flex justify-center text-2xl bg-blue-600 rounded-2xl p-2">
             No Answer Available
         </h1>
