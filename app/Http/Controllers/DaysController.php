@@ -10,7 +10,6 @@ class DaysController extends Controller
 
     public function index()
     {
-        //todo = dynamic days !
         $days = DB::table('answer')->latest('id')->value('day');
 
         return view('welcome', ['days' => $days]);
@@ -18,11 +17,18 @@ class DaysController extends Controller
 
     public function details(int $day, int $part = 1)
     {
-        $answer = DB::table('answer')
-            ->where('part',$part)
-            ->where('day',$day)
-            ->get();
-        return view('details', ['answer' => $this->callSolverService($day, $part),'info'=>$answer]);
+        if (!DB::table('answer')->where('day', $day)->where('part', $part)->exists()) {
+            $answer = [
+                'part' => $part,
+                'day' => $day,
+                'answer' => $this->getServiceClassName($day)::getAnswer($part),
+                'solution' => $this->getServiceClassName($day)::getSolution($part),
+                'question' => 'not available at the moment',
+            ];
+            DB::table('answer')->insert($answer);
+        }
+        $answer = DB::table('answer')->where('day', $day)->where('part', $part)->get();
+        return view('details', ['info' => $answer]);
     }
 
     private function callSolverService(int $day, int $part)
@@ -30,6 +36,16 @@ class DaysController extends Controller
         $className = "App\\Services\\Day{$day}Service";
         if (class_exists($className)) {
             return $className::solve($part);
+        } else {
+            abort(404);
+        }
+    }
+
+    private function getServiceClassName(int $day)
+    {
+        $className = "App\\Services\\Day{$day}Service";
+        if (class_exists($className)) {
+            return $className;
         } else {
             abort(404);
         }

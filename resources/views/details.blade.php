@@ -14,7 +14,11 @@
 </head>
 <body class="bg-gray-900 min-h-screen flex-row items-center justify-center p-20">
 <div class="justify-center border-b-cyan-600 border-r-cyan-600 border-t-red-500 border-l-red-500 border-4 rounded-2xl p-10">
-    @if (!$info->isEmpty())
+    @if (sizeof($info)>0)
+        <div class="flex mb-5 bg-red-300 rounded-2xl p-4 justify-center">
+        <pre class="flex mr-6">Question-></pre>
+        <p class="font-bold font-mono flex">{{$info[0]->question}}</p>
+        </div>
         <pre class="flex mb-5 bg-red-300 rounded-2xl p-4 justify-center">
             <code class="language-php rounded-2xl">
                 {{ ($info[0]->solution) }}

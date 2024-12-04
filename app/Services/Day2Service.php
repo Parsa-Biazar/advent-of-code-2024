@@ -51,6 +51,8 @@ class Day2Service
 
     public static function part2()
     {
-
+        $list = collect(self::getList())->all();
+        $listLength = sizeof($list);
+        dd($list);
     }
 }
